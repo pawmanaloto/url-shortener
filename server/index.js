@@ -1,13 +1,14 @@
 const express = require('express');
+const app = express();
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
+const port = process.env.PORT || 3000;
 
 dotenv.config({ path: './server/config/config.env' });
 
 // MongoDB connection
 connectDB();
 
-const app = express();
 // Middleware
 app.use(express.json());
 
@@ -17,7 +18,5 @@ const shortUrlRouter = require('./routes/shorturl');
 
 app.use('/', indexRouter);
 app.use('/api/shorturl', shortUrlRouter);
-
-const port = process.env.PORT || 3000;
 
 app.listen(port, () => console.log(`Server started at ${port}`));
