@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="bg-gray-900 h-screen">
+  <div id="app">
     <div id="nav" class="text-center text-white text-6xl">
       URL Shortener
     </div>
@@ -9,7 +9,8 @@
 
 <style>
 #nav {
-  padding: 30px;
+  position: absolute;
+  width: 100%;
 }
 
 #nav a {
