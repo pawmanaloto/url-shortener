@@ -1,8 +1,13 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const port = process.env.PORT || 3000;
+
+// Define routes
+const indexRouter = require('./routes');
+const shortUrlRouter = require('./routes/shorturl');
 
 dotenv.config({ path: './server/config/config.env' });
 
@@ -11,10 +16,7 @@ connectDB();
 
 // Middleware
 app.use(express.json());
-
-// Define routes
-const indexRouter = require('./routes');
-const shortUrlRouter = require('./routes/shorturl');
+app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/api/shorturl', shortUrlRouter);
